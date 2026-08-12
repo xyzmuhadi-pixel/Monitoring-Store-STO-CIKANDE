@@ -25,7 +25,12 @@ jobs:
 
       - name: Build APK
         run: gradle :app:assembleDebug
-
+      - name: Check Java source
+        run: |
+          echo "=== MainActivity.java ==="
+          wc -l app/src/main/java/com/stocikande/monitoring/MainActivity.java
+          echo "=== APK contents ==="
+          unzip -l app/build/outputs/apk/debug/app-debug.apk
       - name: Check APK
         run: |
           ls -lh app/build/outputs/apk/debug/
